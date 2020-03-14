@@ -1,36 +1,11 @@
-//segtree
-class Node
-{
-    int L, R;
-    int min = -1, max = -1; //any field you want to be able to query
-    Node left = null, right = null;
+modular inverse
+long inv(long a, long b) { return 1 < a ? b - inv(b % a, a) * b / a : 1; }
 
-    Node(int l, int r) //can also pass in additional information
-    {
-        L = l;
-        R = r;
-        if (L != R)
-        {
-            left = new Node(L, (L + R) / 2);
-            right = new Node(1 + (L + R) / 2, R);
-        }
-    }
+gcd
+long gcd(long a, long b) { return a == 0 ? b : gcd(b % a, a); }
 
-    int min(int l, int r) //generalized query function
-    {
-        if (min == -1)
-        {
-            if (L == R)
-                return min = //degenerate case
-            //this line below is unique to the type of query
-            min = Math.min(left.min(left.L, left.R), right.min(right.L, right.R));
-        }
-        if (L == l && R == r) //segment matches node
-            return min;
-        if (l > left.R)
-            return right.min(l, r); //subsegment of right only
-        if (r < right.L)
-            return left.min(l, r); //subsegment of left only
-        return Math.min(left.min(l, left.R), right.min(right.L, r)); //subsegment of left and right
-    }
-}
+pow mod
+long powmod(long x, long pow) { if (pow == 0) return 1L;long temp = powmod(x,pow / 2);if (pow % 2 == 0) return (temp * temp) % MOD;return (((x * temp) % MOD) * temp) % MOD; }
+
+lcm = ab/gcd(a,b)
+
