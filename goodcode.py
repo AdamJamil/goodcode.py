@@ -17,3 +17,10 @@ map<ll, ll> factor(ll x) {
     if (x != 1) ret[x]++;
     return ret;
 }
+
+get all divisors of number
+vl divisors(ll x) {
+    vl ret;
+    for (ll d = 2; d * d <= x; ++d) if (x % d == 0) { ret.push_back(d); if (x != d * d) ret.push_back(x / d); }
+    return ret;
+}
